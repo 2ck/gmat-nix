@@ -1,0 +1,118 @@
+{
+  "nodes": {
+    "cspice": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-MOOqFzuFaQYq0RJrXbiNlIDiEMcqq9Tn1Wbjtol/myo=",
+        "type": "file",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/misc/toolkit_N0067/C/PC_Linux_GCC_64bit/packages/cspice.tar.Z"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/misc/toolkit_N0067/C/PC_Linux_GCC_64bit/packages/cspice.tar.Z"
+      }
+    },
+    "gmat": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-9eCG76jqVhLNDMWsw/fDvA5sPcWLZC00CXYonPl9o4g=",
+        "type": "file",
+        "url": "https://downloads.sourceforge.net/project/gmat/GMAT/GMAT-R2022a/gmat-src_and_data-R2022a.zip"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://downloads.sourceforge.net/project/gmat/GMAT/GMAT-R2022a/gmat-src_and_data-R2022a.zip"
+      }
+    },
+    "java": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-g6+nScXSbhL600b8sbp7Go6agsqdvl8eT0j/H2/nF40=",
+        "type": "file",
+        "url": "https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.5%2B10/OpenJDK11U-jdk_x64_linux_hotspot_11.0.5_10.tar.gz"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.5%2B10/OpenJDK11U-jdk_x64_linux_hotspot_11.0.5_10.tar.gz"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1715653339,
+        "narHash": "sha256-7lR9tpVXviSccl07GXI0+ve/natd24HAkuy1sQp0OlI=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "abd6d48f8c77bea7dc51beb2adfa6ed3950d2585",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "pcre": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-tVip3B+vU+zrYyOiYMfpE+2pd0Tg5PesetcLCXvz6Cs=",
+        "type": "file",
+        "url": "https://sourceforge.net/projects/pcre/files/pcre/8.45/pcre-8.45.tar.gz/download"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://sourceforge.net/projects/pcre/files/pcre/8.45/pcre-8.45.tar.gz/download"
+      }
+    },
+    "root": {
+      "inputs": {
+        "cspice": "cspice",
+        "gmat": "gmat",
+        "java": "java",
+        "nixpkgs": "nixpkgs",
+        "pcre": "pcre",
+        "swig": "swig",
+        "wxwidgets": "wxwidgets",
+        "xerces": "xerces"
+      }
+    },
+    "swig": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-KMbk5vf/QJa1w55vvnhylAFS7uUHXrbnwBPxEQT70tU=",
+        "type": "file",
+        "url": "https://download.sourceforge.net/swig/swig-4.0.2.tar.gz"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://download.sourceforge.net/swig/swig-4.0.2.tar.gz"
+      }
+    },
+    "wxwidgets": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-up7hom3QxljsLMZ2Gjgp9xn7wogxAY6iFkJQco1UiLk=",
+        "type": "file",
+        "url": "https://github.com/wxWidgets/wxWidgets/releases/download/v3.0.4/wxWidgets-3.0.4.tar.bz2"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/wxWidgets/wxWidgets/releases/download/v3.0.4/wxWidgets-3.0.4.tar.bz2"
+      }
+    },
+    "xerces": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-O966XAyb7is+D6GAv0KSrU82rphDjSBerI24r/DqRBA=",
+        "type": "file",
+        "url": "https://archive.apache.org/dist/xerces/c/3/sources/xerces-c-3.2.2.tar.gz"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://archive.apache.org/dist/xerces/c/3/sources/xerces-c-3.2.2.tar.gz"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
