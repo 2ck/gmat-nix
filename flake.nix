@@ -2,6 +2,7 @@
     description = ( "GMAT: General Mission Analysis Tool" );
 
     inputs = {
+        nixpkgs = { url = "github:nixos/nixpkgs/nixpkgs-unstable"; };
         gmat = { url = "file+https://downloads.sourceforge.net/project/gmat/GMAT/GMAT-R2022a/gmat-src_and_data-R2022a.zip"; flake = false; };
         # gmat dependencies
         xerces = { url = "file+https://archive.apache.org/dist/xerces/c/3/sources/xerces-c-3.2.2.tar.gz"; flake = false; };
@@ -17,7 +18,9 @@
         system = "x86_64-linux";
         pkgs = nixpkgs.legacyPackages.${system};
         dependencies = [
-            pkgs.git
+            pkgs.git pkgs.xorg.libX11 pkgs.xorg.libxcb
+            pkgs.pango pkgs.libtiff pkgs.libpng pkgs.libjpeg
+            pkgs.mesa
         ];
         gmat-configure = pkgs.stdenv.mkDerivation {
             name = "gmat-configure";
@@ -28,7 +31,7 @@
                 pkgs.python3
                 # wxWidgets
                 pkgs.pkg-config
-                pkgs.gtk2 pkgs.gtk3 pkgs.libGL pkgs.libGLU
+                pkgs.gtk3 pkgs.libGL pkgs.libGLU
                 # cspice
                 pkgs.tcsh
             ];
