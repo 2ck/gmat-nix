@@ -35,7 +35,7 @@
                 # cspice
                 pkgs.tcsh
             ];
-            phases = [ "unpackPhase" "patchPhase" "configurePhase" "buildPhase"];
+            phases = [ "unpackPhase" "patchPhase" "configurePhase" "buildPhase" ];
             # unpack gmat and symlink everything that would have been curl-ed in the configure script
             unpackPhase = ''
                 mkdir -p $out
@@ -68,9 +68,12 @@
                 cd $out/GMAT-R2022a/depends/ && python3 configure.py
             '';
             buildPhase = ''
-                mkdir $out/GMAT-R2022a/build/linux-cmake
-                cd $out/GMAT-R2022a/build/linux-cmake
-                cmake -DPLUGIN_PYTHONINTERFACE=OFF -DPLUGIN_EXTERNALFORCEMODEL=OFF -DPLUGIN_MATLABINTERFACE=OFF ../..
+                mkdir $out/GMAT-R2022a/build/cmakebuild-{debug,release}
+                cd $out/GMAT-R2022a/build/cmakebuild-release
+                cmake -DCMAKE_BUILD_TYPE=Release -DPLUGIN_PYTHONINTERFACE=OFF -DPLUGIN_EXTERNALFORCEMODEL=OFF -DPLUGIN_MATLABINTERFACE=OFF ../..
+                make -j$(nproc)
+                cd $out/GMAT-R2022a/build/cmakebuild-debug
+                cmake -DCMAKE_BUILD_TYPE=Debug -DPLUGIN_PYTHONINTERFACE=OFF -DPLUGIN_EXTERNALFORCEMODEL=OFF -DPLUGIN_MATLABINTERFACE=OFF ../..
                 make -j$(nproc)
             '';
             outputs = [ "out" ];
@@ -80,8 +83,10 @@
         devShells.${system}.default = pkgs.mkShell {
             buildInputs = [gmat-configure dependencies];
             shellHook = ''
-                ln -sfT ${gmat-configure} ./gmat
-                cd gmat/GMAT-R2022a/application/bin
+                #ln -sfT ${gmat-configure}/GMAT-R2022a $out/GMAT-R2022a
+                cp -r ${gmat-configure}/GMAT-R2022a ./GMAT-R2022a
+                chmod -R u+w ./GMAT-R2022a
+                cd GMAT-R2022a/application/bin
                 exec $SHELL
             '';
         };
